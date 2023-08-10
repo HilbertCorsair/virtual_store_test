@@ -1,0 +1,14 @@
+FROM node:14.15.3
+# Create app directory
+WORKDIR /home/honeybadger/projects/alten_test/alten-shop-back-products/back/src/app
+# add `node_modules/.bin` to $PATH
+# ENV PATH /usr/src/app/node_modules/.bin:$PATH
+# Install app dependencies
+# A wildcard is used to ensure both package.json AND package-lock.json are copied
+# where available (npm@5+)
+COPY . .
+RUN npm i -no-progress --omit=optional --loglevel=error && npm i -g @angular/cli --no-progress --loglevel=error
+# Bundle app source
+# COPY . /usr/src/app
+# EXPOSE 4200 49153
+CMD [ "npm", "start" ]
